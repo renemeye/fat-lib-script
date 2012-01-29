@@ -1,0 +1,20 @@
+This script is created as a "Build Phase" "Run Script" for Xcode. 
+It creates a fat-lib (more than one architecture lib) if you compiled this library for more than one architecture (e.g. for arm and i386)
+
+If you want to use it:
+======================
+
+1.) Your Library
+ * Start a XCode Project for a static library (iOS)
+ * Write your library code
+
+2.) This Script
+ * Add a Build Phase (Run Script) for your Target (Project Settings > TARGETS > YourTarget > Build Phases > Add Build Phase > Add Run Script)
+ * Copy-Paste this Script to the Script field (or invoke there a run of it)
+
+3.) The Build Settings
+ * Create a Build Settings Variable named "COMBINED_FOLDER_NAME". And put in the name of the folder in which the fat-lib should be created (e.g.: "iOS_and_OSX").
+ * Get sure that your project compiles your library in different sub-directories for each platform (Set "Build Products Path" to something like: "/Your/Desitination/$(PLATFORM_NAME)") 
+
+4.) Compiling
+ * Compile it once for each Platform (e.g. for iOS Simulator and iOS)
